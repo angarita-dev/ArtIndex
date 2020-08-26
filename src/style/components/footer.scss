@@ -1,0 +1,25 @@
+.footer {
+  background-color: $dark-bg;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 28px;
+  
+  h1 {
+    margin: auto;
+    font-size: 14px;
+    font-family: $raleway;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: left;
+    color: $blue-white;
+
+    .bold { font-weight: 800; };
+  }
+}
