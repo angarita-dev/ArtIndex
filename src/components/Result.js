@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Result(props) {
-  const { title, maker, imgUrl } = props;
+  const { title, maker, imgUrl, wide } = props;
 
   const noImgComponent = (
     <div className='result-error-image'>
@@ -10,30 +10,38 @@ function Result(props) {
     </div>
   );
 
-  const imgComponent = (
-    <img 
-      src={imgUrl}
-      alt={title}
-      className='result-image'/>
-  );
+  const imgComponent = wide ?
+    (<div 
+      style={{backgroundImage:`url(${imgUrl})`}}
+      className='result-image' />) :
+    (<img 
+        src={imgUrl}
+        alt={title}
+        className='result-image' />);
 
   const displayImage = imgUrl === '' ? noImgComponent : imgComponent;
 
+  const resultClass = wide ? 'result wide' : 'result';
+
   return(
-    <div className="result">
+    <div className={resultClass}>
       {displayImage}
-      <h1 className="result-title">{title}</h1>
-      <h3 className="result-maker">{maker}</h3>
+      <div className='result-info'>
+        <h1 className="result-title">{title}</h1>
+        <h3 className="result-maker">{maker}</h3>
+      </div>
     </div>
   );
 }
 
 Result.defaultProps = {
-  imgUrl: ''
+  imgUrl: '',
+  wideMode: false,
 }
 
 Result.propTypes = {
   imgUrl: PropTypes.string,
+  wideMode: PropTypes.bool,
 }
 
 export default Result;

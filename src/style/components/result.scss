@@ -1,7 +1,6 @@
 .result {
   margin: 0;
   margin-bottom: 30px;
-  padding-right: 30px;
   box-sizing: border-box;
 
   .result-image {
@@ -14,31 +13,70 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 300px;
     font-family: $raleway;
     font-size: 20px;
     color: $blue-white;
     background-color: $grey;
   }
 
-  .result-title {
-    font-family: $raleway;
-    font-size: 25px;
-    color: $blue-white;
-    padding: 5px;
-    margin: 0;
+  .result-info {
+    display: flex;
+    flex-direction: column;
+
+    .result-title {
+      font-family: $raleway;
+      font-size: 25px;
+      color: $blue-white;
+      padding: 5px;
+      margin: 0;
+    }
+
+    .result-maker {
+      font-family: $raleway;
+      font-size: 15px;
+      color: $light-grey;
+      font-weight: 500;
+      font-stretch: normal;
+      line-height: 1.2;
+      letter-spacing: normal;
+      margin: 0;
+      padding: 0;
+      padding-left: 5px;
+    }
   }
 
-  .result-maker {
-    font-family: $raleway;
-    font-size: 15px;
-    color: $light-grey;
-    font-weight: 500;
-    font-stretch: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
+  &.wide {
     margin: 0;
-    padding: 0;
-    padding-left: 5px;
+
+    .result-image, .result-error-image { height: 240px; }
+
+    .result-image {
+      position: relative;
+      width: auto;
+      background-position: 50%;
+      background-size: auto 240px;
+    }
+
+    .result-info {
+      position: relative;
+      bottom: 0;
+      margin-top: -39px;
+      padding: 0 20px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: $grey;
+      background-color: $transparent-grey;
+
+      .result-title, .result-maker {
+        padding: 5px;
+        box-sizing: border-box;
+      }
+    }
+
   }
 }
+

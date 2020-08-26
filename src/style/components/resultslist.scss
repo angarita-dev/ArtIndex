@@ -11,6 +11,15 @@
     margin: 0;
     margin-right: 30px;
     box-sizing: border-box;
-    width: calc(100%/3);
+    width: 100%;
+  }
+
+  &.wide-mode {
+    padding: 0;
+    width: 100vw;
+
+    .result-column {
+      margin: 0;
+    }
   }
 }

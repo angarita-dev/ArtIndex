@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <NavBar />
       <ResultsList />
+      <div style={{height:'80px', backgroundColor: 'red'}} />
     </div>
   );
 }
