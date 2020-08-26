@@ -1,0 +1,17 @@
+// External stylesheets
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap');
+
+@import './components/result';
+@import './shared/variables';
+@import './components/navbar';
+
+html, body, #root, .App {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.invisible {
+  display: none;
+}
