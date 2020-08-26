@@ -10,14 +10,10 @@ function Result(props) {
     </div>
   );
 
-  const imgComponent = wide ?
-    (<div 
-      style={{backgroundImage:`url(${imgUrl})`}}
-      className='result-image' />) :
-    (<img 
-        src={imgUrl}
-        alt={title}
-        className='result-image' />);
+  const imgComponent = (<img 
+    src={imgUrl}
+    alt={title}
+    className='result-image' />);
 
   const displayImage = imgUrl === '' ? noImgComponent : imgComponent;
 

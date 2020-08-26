@@ -49,19 +49,20 @@
   &.wide {
     margin: 0;
 
-    .result-image, .result-error-image { height: 240px; }
+    .result-error-image { height: 240px; }
 
     .result-image {
+      width: 100%;
+      height: auto;
       position: relative;
-      width: auto;
       background-position: 50%;
-      background-size: auto 240px;
+      background-size: 100% auto;
     }
 
     .result-info {
       position: relative;
       bottom: 0;
-      margin-top: -39px;
+      margin-top: -44px;
       padding: 0 20px;
       flex-direction: row;
       align-items: center;
@@ -76,7 +77,6 @@
         box-sizing: border-box;
       }
     }
-
   }
 }
 
