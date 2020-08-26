@@ -1,0 +1,12 @@
+.result {
+  width: 25%;
+  margin: 0 30px;
+  box-sizing: border-box;
+
+  .result-image {
+    content: "";
+    width: 100%;
+    height: 350px;
+    background-color: red;
+  }
+}

@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap');
 
-@import './components/result';
 @import './shared/variables';
 @import './components/navbar';
+@import './components/resultslist';
+@import './components/result';
 
 html, body, #root, .App {
   margin: 0;
