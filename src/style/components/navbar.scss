@@ -38,6 +38,7 @@
     select {
       display: block !important;
       width: 20%;
+      min-width: 120px;
       border: none;
       border-bottom: 1px solid $light-grey;
 
