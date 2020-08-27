@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Actions
+import { changeFilter } from '../actions/index';
 
 function Filter(props) {
-  const { availableFilters } = props;
+  const { availableFilters, changeFilter, currentFilter } = props;
 
   const [openFilter, setOpenFilter] = useState(false);
 
@@ -11,7 +15,7 @@ function Filter(props) {
   const handleFilterChange = event => {
     const { value } = event.target;
 
-    console.log(`set state to ${value}`);
+    changeFilter(value);
   };
 
   const handleFilterIconClick = () => {
@@ -22,7 +26,7 @@ function Filter(props) {
     ? (
       <select
         id="filter-select"
-        defaultValue={availableFilters[0]}
+        value={currentFilter}
         onChange={handleFilterChange}
       >
         {filterOptions}
@@ -48,6 +52,12 @@ function Filter(props) {
 
 Filter.propTypes = {
   availableFilters: PropTypes.array.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
 };
 
-export default Filter;
+const mapStateToProps = state => ({
+  currentFilter: state.filter,
+});
+
+export default connect(mapStateToProps, { changeFilter })(Filter);
