@@ -3,12 +3,35 @@
   margin-bottom: 28px;
 
   .image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     content: "";
     height: 80vh;
+    max-width: 100vw;
     background-position: center;
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-color: black;
+
+    .img-link {
+      padding: 5px 10px; 
+      color: $blue-white;
+      font-size: 15px;
+      font-family: $raleway;
+      background-color: $transparent-grey;
+      text-decoration: none;
+
+      &:visited {
+        color: $blue-white;
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
   }
 
   .info-container {
@@ -30,34 +53,50 @@
     }
 
     .general-data-container {
+      display: flex;
+      flex-direction: row;
       padding: 0 15px 30px;
 
-      .material-container {
-        p {
+      .specific-info-container {
+
+        .material-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          p {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            i { margin-right: 5px; }
+          }
+        }
+
+        .description-container {
           display: flex;
           flex-direction: row;
+          justify-content: space-between;
           align-items: center;
-          i { margin-right: 5px; }
+
+          .main-colors {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            margin-left: 15px;
+            min-width: 15px;
+
+            .color-item {
+              content: '';
+              height: 15px;
+            }
+          }
         }
       }
 
-      .description-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        .main-colors {
-          display: flex;
-          flex-direction: column;
-          margin-left: 15px;
-          min-width: 15px;
-
-          .color-item {
-            content: '';
-            height: 15px;
-          }
-        }
+      .full-art-display {
+        margin: 0 5px;
+        height: 200px;
+        width: auto;
       }
     }
   }

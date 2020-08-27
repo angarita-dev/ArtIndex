@@ -13,20 +13,32 @@ function ArtDisplay(props) {
   return (
     <div className="art-display">
       <div className="image-container" 
-        style={{backgroundImage:`url(${imgUrl})`}}/>
+        style={{backgroundImage:`url(${imgUrl})`}}
+      >
+        <a 
+          className="img-link"
+          href={imgUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See full image
+        </a>
+      </div>
       <div className="info-container">
         <h1 className="long-title">{title}</h1>
         <div className="general-data-container">
           <div className="specific-info-container">
             <div className="material-container">
-              <p>
-                <i className="material-icons md-light">palette</i>
-                {subTitle}
-              </p>
-              <p>
-                <i className="material-icons md-light">straighten</i>
-                {scLabelLine}
-              </p>
+              <div className="text-info">
+                <p>
+                  <i className="material-icons md-light">palette</i>
+                  {subTitle}
+                </p>
+                <p>
+                  <i className="material-icons md-light">straighten</i>
+                  {scLabelLine}
+                </p>
+              </div>
             </div>
             <div className="description-container">
               <p className="description">{description}</p>
