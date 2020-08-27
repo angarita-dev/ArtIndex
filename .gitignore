@@ -1,3 +1,6 @@
+# env file
+.env
+
 # temp files
 *.swp
 *.swo
