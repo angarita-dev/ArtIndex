@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-function SearchBar() {
+// Actions
+import { changeQueryInput, deleteQueryInput } from '../actions/index';
+
+function SearchBar(props) {
+  const { currentInput, changeQueryInput, deleteQueryInput } = props;
+
   const [openSearch, setOpenSearch] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
 
   const handleCloseSearchBarClick = () => {
-    setSearchInput('');
+    deleteQueryInput();
     setOpenSearch(false);
   };
 
   const handleSearchChange = event => {
     const { value } = event.target;
 
-    setSearchInput(value);
+    changeQueryInput(value);
   };
 
   const handleSearchClick = () => {
     if (openSearch) {
-      if (searchInput === '' || !searchInput.replace(/\s/g, '').length) return;
-      setSearchInput('');
-      console.log(`query for ${searchInput}`);
+      if (currentInput === '' || !currentInput.replace(/\s/g, '').length) return;
+      deleteQueryInput();
     }
 
     setOpenSearch(!openSearch);
@@ -31,7 +36,7 @@ function SearchBar() {
         className="search-input"
         type="text"
         onChange={handleSearchChange}
-        value={searchInput}
+        value={currentInput}
         id="search-bar"
       />
     ) : null;
@@ -70,4 +75,14 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+SearchBar.propTypes = {
+  currentInput: PropTypes.string.isRequired,
+  changeQueryInput: PropTypes.func.isRequired,
+  deleteQueryInput: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+  currentInput: state.queryInput,
+});
+
+export default connect(mapStateToProps, { changeQueryInput, deleteQueryInput })(SearchBar);
