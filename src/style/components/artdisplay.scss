@@ -1,0 +1,64 @@
+.art-display {
+  width: 100%;
+  margin-bottom: 28px;
+
+  .image-container {
+    content: "";
+    height: 80vh;
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: black;
+  }
+
+  .info-container {
+    padding: 0 30px;
+    font-family: $raleway;
+    color: $light-grey;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    text-align: left;
+
+    .long-title {
+      color: $blue-white;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .general-data-container {
+      padding: 0 15px 30px;
+
+      .material-container {
+        p {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          i { margin-right: 5px; }
+        }
+      }
+
+      .description-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .main-colors {
+          display: flex;
+          flex-direction: column;
+          margin-left: 15px;
+          min-width: 15px;
+
+          .color-item {
+            content: '';
+            height: 15px;
+          }
+        }
+      }
+    }
+  }
+}
