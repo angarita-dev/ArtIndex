@@ -1,0 +1,24 @@
+.search-container {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+
+  .bar-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      border: none;
+      color: white;
+      padding: 2px 5px;
+      font-size: 15px;
+      font-family: $raleway;
+      font-weight: 800;
+      background-color: $dark-bg;
+      border-bottom: 1px solid $light-grey;
+      width: 100%;
+    }
+  }
+}

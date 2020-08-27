@@ -1,0 +1,25 @@
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  transition: width 2s;
+
+  i { cursor: pointer; }
+
+  select {
+    display: block !important;
+    width: 20%;
+    min-width: 120px;
+    border: none;
+    border-bottom: 1px solid $light-grey;
+
+    &, option {
+      font-family: $raleway;
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      background-color: $dark-bg;
+    }
+  }
+}
