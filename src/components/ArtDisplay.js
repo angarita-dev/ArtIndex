@@ -47,4 +47,5 @@ ArtDisplay.defaultProps = {
   imgUrl: "https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY=s0",
   description: "Despite his lack of experience, the young Rembrandt was not afraid to experiment. In this early self portrait the light brushes past his right cheek. The rest of the face is cloaked in shadow. It takes a moment to realise that the artist is staring intently, directly at the viewer. Rembrandt used the back of his brush to scratch in the wet paint, to accentuate the curls of his wild, unkempt hair."
 };
+
 export default ArtDisplay;
