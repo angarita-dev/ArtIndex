@@ -9,7 +9,7 @@ Here is a list of requirements for the project to work:
 * [npm](https://www.npmjs.com/) is required to install packages and dependencies.
 * Internet connection to fetch the data from Rijksmuseum rich and [freely accessible content.](https://www.rijksmuseum.nl/en/data/policy)
 
-The Rijksmuseum\`s API requires an `API_KEY` this is setted up locally using a `.env` file, please, do not commit this file, if you want to run the app locally you can read more about how to connect to the Rijksmuseum API and how it works [here.](https://data.rijksmuseum.nl/object-metadata/api/)
+The Rijksmuseum's API requires an `API_KEY` this is setted up locally using a `.env` file, please, do not commit this file, if you want to run the app locally you can read more about how to connect to the Rijksmuseum API and how it works [here.](https://data.rijksmuseum.nl/object-metadata/api/)
 
 ### Available Commands
 
