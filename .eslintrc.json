@@ -22,4 +22,5 @@
   "ignorePatterns": [
     "dist/",
     "build/"
+  ]
 }
