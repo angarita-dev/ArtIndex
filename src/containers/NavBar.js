@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function NavBar(props) {
-  const filters = ['Relevant', 'Desc'];
-  const filterOptions = filters.map(filter => {
-    return (<option key={filter}>{filter}</option>);
-  });
+// Components
+import Filter from '../components/Filter';
 
+function NavBar(props) {
+  const availableFilters = ['Relevant', 'Chronic'];
+  
   const [openSearch, setOpenSearch] = useState(false);
-  const [openFilter, setOpenFilter] = useState(false);
   const { displayBackArrow, onBack } = props;
 
   const handleBackClick = (e) => {
@@ -21,14 +20,6 @@ function NavBar(props) {
       setOpenSearch(true);
   }
 
-  const handleFilterChange = (e) => {
-    console.log('set redux filter');
-  }
-
-  const handleFilterClick = (e) => {
-    setOpenFilter(!openFilter);
-  }
-
   const handleCloseSearchBarClick = (e) => {
     setOpenSearch(false);
   }
@@ -36,7 +27,6 @@ function NavBar(props) {
   let navBarClass = 'nav-bar';
 
   if (openSearch) navBarClass += ' display-search-bar';
-  if (openFilter) navBarClass += ' display-filter';
   if (displayBackArrow) navBarClass += ' display-back-arrow';
 
   return (
@@ -52,21 +42,6 @@ function NavBar(props) {
       </div>
       <h1 className='title'>ArtIndex</h1>
       <div className='right-icons-container'>
-        <select
-          id='filter-select'
-          defaultValue={filters[0]}
-          className='invisible'
-          onChange={handleFilterChange}
-        >
-          {filterOptions}
-        </select>
-        <i 
-          id='filter-icon'
-          className="material-icons md-light"
-          onClick={handleFilterClick}
-        >
-          filter_alt
-        </i>
         <div className="search-container invisible">
           <div className="bar-container">
             <input className="search-input" type="text" id="search-bar" />
@@ -79,6 +54,7 @@ function NavBar(props) {
             clear
           </i>
         </div>
+        <Filter availableFilters={availableFilters}/>
         <i
           id='search-icon'
           className="material-icons md-light"
