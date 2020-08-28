@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import filter from './filter';
 import queryInput from './queryInput';
 import generalQuery from './generalQuery';
+import display from './display';
 
 export const DEFAULT_STATE = {
   generalQuery: {
@@ -10,6 +11,7 @@ export const DEFAULT_STATE = {
       {
         id: '124',
         title: 'Title1',
+        longTitle: 'Long title1',
         maker: 'artist',
         imgUrl: "https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY=s0",
         imgHeight: 2562,
@@ -54,4 +56,9 @@ export const DEFAULT_STATE = {
   },
 };
 
-export default combineReducers({ filter, queryInput, generalQuery });
+export default combineReducers({
+  filter,
+  queryInput,
+  generalQuery,
+  display,
+});

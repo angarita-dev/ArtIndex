@@ -11,6 +11,9 @@ export const GENERAL_QUERY_PENDING = 'GENERAL_QUERY_PENDING';
 export const GENERAL_QUERY_SUCCESS = 'GENERAL_QUERY_SUCCESS';
 export const GENERAL_QUERY_ERROR = 'GENERAL_QUERY_ERROR';
 
+// Display
+export const CHANGE_DISPLAY_VALUES = 'CHANGE_DISPLAY_VALUES';
+
 // Actions
 // filter
 export const changeFilter = filter => ({
@@ -60,4 +63,10 @@ export const generalQuerySuccess = results => {
 export const generalQueryError = error => ({
   type: GENERAL_QUERY_ERROR,
   error: error,
+});
+
+// Display
+export const changeDisplayValues = display => ({
+  type: CHANGE_DISPLAY_VALUES,
+  display, 
 });
