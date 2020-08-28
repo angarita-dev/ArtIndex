@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Actions
 import { changeQueryInput, deleteQueryInput } from '../actions/index';
+import { getGeneralQueryPending } from '../actions/reducers/generalQuery';
+import generalQuery from '../actions/generalQuery';
 
+// Component
 function SearchBar(props) {
-  const { currentInput, changeQueryInput, deleteQueryInput } = props;
+  const {
+    currentInput,
+    changeQueryInput,
+    deleteQueryInput,
+    fetchGeneralQuery,
+    pending,
+  } = props;
 
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -16,15 +26,16 @@ function SearchBar(props) {
   };
 
   const handleSearchChange = event => {
-    const { value } = event.target;
+    const { value } = event.target
 
     changeQueryInput(value);
   };
 
   const handleSearchClick = () => {
+    if (pending) return;
     if (openSearch) {
       if (currentInput === '' || !currentInput.replace(/\s/g, '').length) return;
-      deleteQueryInput();
+      fetchGeneralQuery();
     }
 
     setOpenSearch(!openSearch);
@@ -83,6 +94,13 @@ SearchBar.propTypes = {
 
 const mapStateToProps = state => ({
   currentInput: state.queryInput,
+  pending: getGeneralQueryPending(state),
 });
 
-export default connect(mapStateToProps, { changeQueryInput, deleteQueryInput })(SearchBar);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  changeQueryInput,
+  deleteQueryInput,
+  fetchGeneralQuery: generalQuery,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
