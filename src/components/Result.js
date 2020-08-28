@@ -1,9 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
+// Actions
+import { changeDisplayValues } from '../actions/index';
+
+// Component
 function Result(props) {
-  const { title, maker, imgUrl, wide } = props;
+  const {
+    id,
+    title,
+    longTitle,
+    maker,
+    imgUrl,
+    wide,
+    changeDisplayValues
+  } = props;
+
+  const handleLinkClick = () => {
+    changeDisplayValues({
+      id,
+      title,
+      longTitle,
+      maker,
+      imgUrl,
+    });
+  };
 
   const noImgComponent = (
     <div className='result-error-image'>
@@ -21,7 +44,10 @@ function Result(props) {
   const resultClass = wide ? 'result wide' : 'result';
 
   return(
-    <Link to='/display'>
+    <Link 
+      to='/display'
+      onClick={handleLinkClick}
+    >
       <div className={resultClass}>
         {displayImage}
         <div className='result-info'>
@@ -41,6 +67,13 @@ Result.defaultProps = {
 Result.propTypes = {
   imgUrl: PropTypes.string,
   wideMode: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  longTitle: PropTypes.string.isRequired,
+  maker: PropTypes.string.isRequired,
+  changeDisplayValues: PropTypes.func.isRequired,
 }
 
-export default Result;
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps, { changeDisplayValues })(Result);
