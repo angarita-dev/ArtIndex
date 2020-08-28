@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 // Components
 import Filter from '../components/Filter';
@@ -20,19 +21,11 @@ function NavBar(props) {
 
   return (
     <div className={navBarClass}>
-      <div className="left-icons-container">
-        <i
-          id="back-icon"
-          className="material-icons md-light invisible"
-          role="button"
-          tabIndex={0}
-          onKeyPress={handleBackClick}
-          onClick={handleBackClick}
-        >
-          arrow_back_ios
-        </i>
-      </div>
-      <h1 className="title">ArtIndex</h1>
+      <h1 className="title">
+        <Link to='/'>
+          ArtIndex
+        </Link>
+      </h1>
       <div className="right-icons-container">
         <Filter availableFilters={availableFilters} />
         <SearchBar />

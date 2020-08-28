@@ -21,3 +21,8 @@ html, body, #root, .App {
 .invisible {
   display: none;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}

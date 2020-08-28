@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 function Result(props) {
   const { title, maker, imgUrl, wide } = props;
@@ -20,13 +21,15 @@ function Result(props) {
   const resultClass = wide ? 'result wide' : 'result';
 
   return(
-    <div className={resultClass}>
-      {displayImage}
-      <div className='result-info'>
-        <h1 className="result-title">{title}</h1>
-        <h3 className="result-maker">{maker}</h3>
+    <Link to='/display'>
+      <div className={resultClass}>
+        {displayImage}
+        <div className='result-info'>
+          <h1 className="result-title">{title}</h1>
+          <h3 className="result-maker">{maker}</h3>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
