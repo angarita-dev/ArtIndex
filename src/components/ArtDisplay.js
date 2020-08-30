@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// Actions
+import {
+  getDetailsQueryPending,
+  getDetailsQuerySuccess,
+  getDetailsQueryError
+} from '../actions/reducers/detailsQuery';
+import { getDisplayValues } from '../actions/reducers/display';
+
+import detailsQuery from '../actions/detailsQuery';
 
 function ArtDisplay(props) {
-  const { title, subTitle, scLabelLine, imgUrl, colors, description } = props;
+  const [description, setDescription] = useState('');
+  const [colors, setColors] = useState([]);
+
+  const {
+    title,
+    subTitle,
+    scLabelLine,
+    imgUrl,
+    fetchDetails,
+  } = props;
+
+  useEffect(() => {
+    fetchDetails();
+  },[]);
 
   const colorSwatch = colors.map(color => (
     <div key={color} className='color-item' style={{backgroundColor:color}}/>));
@@ -52,12 +77,14 @@ function ArtDisplay(props) {
 }
 
 ArtDisplay.defaultProps = {
-  colors: ['#ff0000', 'yellow', 'green', 'white', 'blue'],
-  title: "Self-portrait",
-  subTitle: "h 22.6cm × w 18.7cm",
-  scLabelLine: "oil on panel, c. 1628",
-  imgUrl: "https://lh3.googleusercontent.com/7qzT0pbclLB7y3fdS1GxzMnV7m3gD3gWnhlquhFaJSn6gNOvMmTUAX3wVlTzhMXIs8kM9IH8AsjHNVTs8em3XQI6uMY=s0",
-  description: "Despite his lack of experience, the young Rembrandt was not afraid to experiment. In this early self portrait the light brushes past his right cheek. The rest of the face is cloaked in shadow. It takes a moment to realise that the artist is staring intently, directly at the viewer. Rembrandt used the back of his brush to scratch in the wet paint, to accentuate the curls of his wild, unkempt hair."
 };
 
-export default ArtDisplay;
+const mapStateToProps = state => ({
+  ...getDisplayValues(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchDetails: detailsQuery,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArtDisplay);

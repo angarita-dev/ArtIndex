@@ -1,4 +1,4 @@
-// Action types
+// ----- Action types -----
 // Filter
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 
@@ -6,7 +6,7 @@ export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const CHANGE_QUERY_INPUT = 'CHANGE_QUERY_INPUT';
 export const DELETE_QUERY_INPUT = 'DELETE_QUERY_INPUT';
 
-// Fetch query
+// General query
 export const GENERAL_QUERY_PENDING = 'GENERAL_QUERY_PENDING';
 export const GENERAL_QUERY_SUCCESS = 'GENERAL_QUERY_SUCCESS';
 export const GENERAL_QUERY_ERROR = 'GENERAL_QUERY_ERROR';
@@ -14,7 +14,12 @@ export const GENERAL_QUERY_ERROR = 'GENERAL_QUERY_ERROR';
 // Display
 export const CHANGE_DISPLAY_VALUES = 'CHANGE_DISPLAY_VALUES';
 
-// Actions
+// Details query
+export const DETAILS_QUERY_PENDING = 'DETAILS_QUERY_PENDING';
+export const DETAILS_QUERY_SUCCESS = 'DETAILS_QUERY_SUCCESS';
+export const DETAILS_QUERY_ERROR = 'DETAILS_QUERY_ERROR';
+
+// ----- Actions -----
 // filter
 export const changeFilter = filter => ({
   type: CHANGE_FILTER,
@@ -32,7 +37,7 @@ export const deleteQueryInput = () => ({
   input: '',
 });
 
-// Fetch Query
+// General Query
 export const generalQueryPending = () => ({
   type: GENERAL_QUERY_PENDING,
 });
@@ -44,9 +49,11 @@ export const generalQuerySuccess = results => {
       '';
   };
 
+  const id = (result) => result.id.replace('en-','');
+
   const parsedData = results.artObjects.map(result => {
     return {
-      id: result.id,
+      id: id(result),
       title: result.title,
       maker: result.principalOrFirstMaker,
       longTitle: result.longTitle,
@@ -70,3 +77,29 @@ export const changeDisplayValues = display => ({
   type: CHANGE_DISPLAY_VALUES,
   display, 
 });
+
+// Details query
+export const detailsQueryPending = () => ({
+  type: DETAILS_QUERY_PENDING,
+});
+
+export const detailsQuerySuccess = results => {
+  const parsedData = results.artObjects.map(result => {
+    return {
+      colors: result.colors,
+      description: result.plaqueDescriptionEnglish,
+    }
+  });
+
+  return {
+    type: DETAILS_QUERY_SUCCESS,
+    detailsQueryResult: parsedData,
+  }
+};
+
+export const detailsQueryError = error => ({
+  type: DETAILS_QUERY_ERROR,
+  error: error,
+});
+
+

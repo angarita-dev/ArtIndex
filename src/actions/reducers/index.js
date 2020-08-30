@@ -3,13 +3,14 @@ import filter from './filter';
 import queryInput from './queryInput';
 import generalQuery from './generalQuery';
 import display from './display';
+import detailsQuery from './detailsQuery';
 
 export const DEFAULT_STATE = {
   generalQuery: {
     pending: false,
     results: [
       {
-        id: '124',
+        id: 'SK-A-4691',
         title: 'Title1',
         longTitle: 'Long title1',
         maker: 'artist',
@@ -61,4 +62,5 @@ export default combineReducers({
   queryInput,
   generalQuery,
   display,
+  detailsQuery,
 });
